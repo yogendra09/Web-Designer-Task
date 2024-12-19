@@ -45,7 +45,7 @@ const CardContainer = ({ viewType }) => {
             viewType === "grid" ? (
               <Card key={item.id} item={item} setcardPopUp={setcardPopUp} />
             ) : (
-              <Tiles key={item.id} item={item} />
+              <Tiles key={item.id} item={item} setcardPopUp={setcardPopUp} />
             )
           )
         ) : (
@@ -56,7 +56,7 @@ const CardContainer = ({ viewType }) => {
         )}
       </div>
 
-      <div className="flex justify-center gap-2">
+      <div className="flex justify-center w-full">
         {reloadList && cards.length > 0 && (
           <Pagination
             count={Math.ceil(cards.length / itemsPerPage)} // Total number of pages
