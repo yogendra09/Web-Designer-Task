@@ -16,10 +16,7 @@ const Home = () => {
           setFeedback={setFeedback}
           className="md:w-1/4 w-full"
         />
-        <CardContainer
-          viewType={viewType}
-          className="md:w-3/4 w-full"
-        />
+        <CardContainer viewType={viewType} className="md:w-3/4 w-full" />
       </div>
       {feedback && <Feedback setFeedback={setFeedback} />}
     </>

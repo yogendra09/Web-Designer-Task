@@ -119,7 +119,7 @@ const Feedback = ({ setFeedback }) => {
           ].map(({ label, name, type = "text" }) => (
             <div key={name} className="relative">
               <label className="text-sm flex gap-2 absolute -top-4 left-0">
-                {label} <span className="text-red-500">*</span>
+                {label} *
                 {FormErrors[name] && (
                   <p className="text-red-500">{FormErrors[name]}</p>
                 )}
@@ -147,4 +147,3 @@ const Feedback = ({ setFeedback }) => {
 };
 
 export default Feedback;
-
