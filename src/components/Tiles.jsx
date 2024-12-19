@@ -2,12 +2,12 @@ import { X } from "lucide-react";
 import { asyncRemoveCard } from "../store/Actions/cardsActions";
 import { useDispatch } from "react-redux";
 
-const Tile = ({ item, viewType }) => {
+const Tile = ({ item, viewType , setcardPopUp }) => {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-wrap items-center cursor-pointer shadow-[0_2px_6px_-1px_rgba(0,0,0,0.3)] rounded-lg w-full p-4">
       <img src={item.thumbnail} className="w-16 h-16 rounded-full" />
-      <div className="ml-4 flex-1">
+      <div onClick={()=>setcardPopUp(item)} className="ml-4 flex-1 cursor-pointer">
         <p className="text-sm text-gray-800 font-semibold">{item.title}</p>
         <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
         <p className="text-xs text-gray-500 mt-0.5">{item.warrantyInformation}</p>

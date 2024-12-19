@@ -2,7 +2,7 @@ import { X } from "lucide-react";
 import { asyncRemoveCard } from "../store/Actions/cardsActions";
 import { useDispatch } from "react-redux";
 
-const Card = ({ item }) => {
+const Card = ({ item,setcardPopUp }) => {
   const dispatch = useDispatch();
   return (
     <div>
@@ -16,7 +16,7 @@ const Card = ({ item }) => {
             <X className="w-4 h-4 text-red-500" />
           </button>
         </div>
-        <div className="p-4">
+        <div onClick={()=>setcardPopUp(item)} className="p-4 cursor-pointer">
           <h3 className="font-semibold text-gray-800 mb-2">{item.title}</h3>
           <p className="text-gray-600 text-sm mb-2">{item.description}</p>
           <time className="text-gray-400 text-xs">{item.warrantyInformation}</time>

@@ -2,23 +2,24 @@ import { X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 const Feedback = ({ setFeedback }) => {
-
   const [FormData, setFormData] = useState({
     firstName: "",
     lastName: "",
     country: "",
     email: "",
     phone: "",
-  })
+  });
 
   const changeHandler = (e) => {
-    setFormData({...FormData, [e.target.name]: e.target.value });
+    setFormData({ ...FormData, [e.target.name]: e.target.value });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     const { firstName, lastName, country, email, phone } = FormData;
-    if (!firstName || !lastName || !country || !email || !phone) { return toast.error("All fields are required") }
+    if (!firstName || !lastName || !country || !email || !phone) {
+      return toast.error("All fields are required");
+    }
 
     toast.success("Feedback submitted successfully");
     setFeedback(false);
@@ -26,25 +27,29 @@ const Feedback = ({ setFeedback }) => {
 
   return (
     <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 flex items-center justify-start">
-     <div className="  h-full bg-white rounded-lg shadow-lg"> 
-     <div className="flex items-center gap-4 mb-8 bg-white p-4 rounded-lg shadow-sm">
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/004/607/791/non_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg"
-          alt="Profile"
-          className="w-10 h-10 rounded-full"
-        />
-        <div>
-          <h1 className="font-semibold text-gray-800">Hi Reader,</h1>
-          <p className="text-gray-600 text-sm">Here&apos;s your News!</p>
+      <div className="  h-full bg-white rounded-lg shadow-lg">
+        <div className="flex items-center gap-4 mb-8 bg-white p-4 rounded-lg shadow-sm">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/004/607/791/non_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg"
+            alt="Profile"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <h1 className="font-semibold text-gray-800">Hi Reader,</h1>
+            <p className="text-gray-600 text-sm">Here&apos;s your News!</p>
+          </div>
+        </div>
+        <div className="bg-white p-4 rounded-lg shadow-sm mb-8">
+          <h2 className="font-semibold text-gray-800 mb-4">Have a Feedback?</h2>
+          <button
+            type="button"
+            onClick={() => setFeedback(true)}
+            className="bg-red-400 text-white px-6 py-2 rounded-md hover:bg-red-500 transition-colors"
+          >
+            We&apos;re Listening!
+          </button>
         </div>
       </div>
-     <div className="bg-white p-4 rounded-lg shadow-sm mb-8">
-        <h2 className="font-semibold text-gray-800 mb-4">Have a Feedback?</h2>
-        <button type="button" onClick={() => setFeedback(true)} className="bg-red-400 text-white px-6 py-2 rounded-md hover:bg-red-500 transition-colors">
-          We&apos;re Listening!
-        </button>
-      </div>
-     </div>
       <div className="relative top-0 left-0 w-fit h-full bg-white p-10">
         <button
           onClick={() => setFeedback(false)}
@@ -53,10 +58,17 @@ const Feedback = ({ setFeedback }) => {
           <X className="w-4 h-4 text-red-500" />
         </button>
         <div className="text-center ">
-          <h1 className="text-2xl font-semibold">Thank you so much for taking the time</h1>
-          <p className="text-sm text-gray-600">Please provide the below details!</p>
+          <h1 className="text-2xl font-semibold">
+            Thank you so much for taking the time
+          </h1>
+          <p className="text-sm text-gray-600">
+            Please provide the below details!
+          </p>
         </div>
-        <form onSubmit={submitHandler} className="font-[sans-serif] text-[#333] max-w-4xl mx-auto px-6 my-8 mt-12">
+        <form
+          onSubmit={submitHandler}
+          className="font-[sans-serif] text-[#333] max-w-4xl mx-auto px-6 my-8 mt-12"
+        >
           <div className="grid sm:grid-cols-2 gap-10">
             <div className="relative flex items-center">
               <label className="text-[13px] absolute top-[-10px] left-0">
@@ -115,7 +127,7 @@ const Feedback = ({ setFeedback }) => {
                 Phone No
               </label>
               <input
-              name="phone"
+                name="phone"
                 value={FormData.phone}
                 onChange={changeHandler}
                 type="number"
@@ -170,7 +182,7 @@ const Feedback = ({ setFeedback }) => {
                 Email
               </label>
               <input
-              name="email"
+                name="email"
                 value={FormData.email}
                 onChange={changeHandler}
                 type="email"
