@@ -32,7 +32,7 @@ const CardContainer = ({ viewType }) => {
 
   return (
     <div className="w-full max-h-screen overflow-y-auto py-6">
-      {cardPopUp && <CardPoPUp setcardPopUp={setcardPopUp} />}
+      {cardPopUp && <CardPoPUp setcardPopUp={setcardPopUp} item={cardPopUp} />}
       <div
         className={`grid ${
           viewType === "grid"
@@ -57,7 +57,7 @@ const CardContainer = ({ viewType }) => {
       </div>
 
       <div className="flex justify-center gap-2">
-        {cards.length > 0 && (
+        {reloadList && cards.length > 0 && (
           <Pagination
             count={Math.ceil(cards.length / itemsPerPage)} // Total number of pages
             page={currentPage}
