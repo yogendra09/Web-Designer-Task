@@ -11,7 +11,7 @@ const Tiles = ({ item, viewType, setcardPopUp }) => {
       <img
         src={imageLoaded ? item.thumbnail : placeholderImage}
         alt={item.title}
-        className="w-full h-40 object-cover"
+        className="w-16 h-16 "
         onLoad={() => setImageLoaded(true)}
         onError={() => setImageLoaded(false)} // If thumbnail fails to load
       />
