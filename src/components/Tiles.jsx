@@ -1,12 +1,20 @@
 import { X } from "lucide-react";
 import { asyncRemoveCard } from "../store/Actions/cardsActions";
 import { useDispatch } from "react-redux";
-
+import { useState } from "react";
+import placeholderImage from "../../public/placeholder-image.webp"
 const Tiles = ({ item, viewType, setcardPopUp }) => {
   const dispatch = useDispatch();
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <div className="flex flex-wrap items-center cursor-pointer shadow-[0_2px_6px_-1px_rgba(0,0,0,0.3)] rounded-lg w-full p-4">
-      <img src={item.thumbnail} className="w-16 h-16 rounded-full" />
+      <img
+        src={imageLoaded ? item.thumbnail : placeholderImage}
+        alt={item.title}
+        className="w-full h-40 object-cover"
+        onLoad={() => setImageLoaded(true)}
+        onError={() => setImageLoaded(false)} // If thumbnail fails to load
+      />
       <div
         onClick={() => setcardPopUp(item)}
         className="ml-4 flex-1 cursor-pointer"

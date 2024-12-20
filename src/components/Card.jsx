@@ -1,9 +1,12 @@
 import { X } from "lucide-react";
 import { asyncRemoveCard } from "../store/Actions/cardsActions";
 import { useDispatch } from "react-redux";
-
+import { useState } from "react";
+import placeholderImage from "../../public/placeholder-image.webp"
 const Card = ({ item, setcardPopUp }) => {
   const dispatch = useDispatch();
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div>
       <div
@@ -12,7 +15,7 @@ const Card = ({ item, setcardPopUp }) => {
       >
         <button
           onClick={() => dispatch(asyncRemoveCard(item.id))}
-          className=" absolute top-0 right-0 p-1 bg-white rounded-full shadow-md hover:bg-gray-100"
+          className="absolute top-0 right-0 p-1 bg-white rounded-full shadow-md hover:bg-gray-100"
         >
           <X className="w-4 h-4 text-red-500" />
         </button>
@@ -25,9 +28,11 @@ const Card = ({ item, setcardPopUp }) => {
         </div>
         <div className="">
           <img
-            src={item.thumbnail}
-            alt=""
+            src={imageLoaded ? item.thumbnail : placeholderImage}
+            alt={item.title}
             className="w-full h-40 object-cover"
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageLoaded(false)} // If thumbnail fails to load
           />
         </div>
       </div>
